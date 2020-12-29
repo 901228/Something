@@ -5,15 +5,15 @@
 using namespace std;
 
 
-int length=3; //³D¨­ªø«×
+int length=3; //è›‡èº«é•·åº¦
 
-int z=0; //¤è¦V
-char de; //¤W¤U¥ª¥k
-int snake[2][10000]; //®y¼Ğ
-int s=0; //¨BÆJ
+int z=0; //æ–¹å‘
+char de; //ä¸Šä¸‹å·¦å³
+int snake[2][10000]; //åº§æ¨™
+int s=0; //æ­¥é©Ÿ
 int s2=0;
-int nowX=38; //²{x®y¼Ğ
-int nowY=9; //²{y®y¼Ğ
+int nowX=38; //ç¾xåº§æ¨™
+int nowY=9; //ç¾yåº§æ¨™
 
 int eggX;
 int eggY;
@@ -50,7 +50,7 @@ int pxy[20][80]={
     {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
 
-bool k=1; //µ²§ôÅÜ¼Æ
+bool k=1; //çµæŸè®Šæ•¸
 
 
 void SetColor(int color = 7){
@@ -102,19 +102,19 @@ void keyboardControll(){
 		switch( de=getch() ){
 	        case -32:
 	            switch( de=getch() ){
-	                case 0x48: //¤W
+	                case 0x48: //ä¸Š
 	                	if(z!=-1)
 	                    	z=1;
 						break;
-	                case 0x50: //¤U
+	                case 0x50: //ä¸‹
 	                	if(z!=1)
 	                	    z=-1;
                         break;
-	                case 0x4B: //¥ª
+	                case 0x4B: //å·¦
 	                	if(z!=-2)
 	                    	z=2;
                         break;
-	                case 0x4D: //¥k
+	                case 0x4D: //å³
 	                	if(z!=2)
 	                    	z=-2;
                         break;
@@ -251,13 +251,13 @@ int main(){
     while(k){
         run();
         gotoxy(1,21);
-        cout<<"ªø«×¡G "<<length;
+        cout<<"é•·åº¦ï¼š "<<length;
     };
     wall(0);
     system("cls");
     system("color CE");
     gotoxy(2,2);
-    cout<<"GameOver.\n  Á`ªø¡G "<<length;
+    cout<<"GameOver.\n  ç¸½é•·ï¼š "<<length;
     gotoxy(2,6);
     system("pause");
     return 0;
