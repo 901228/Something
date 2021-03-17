@@ -1,7 +1,7 @@
 source "$HOME/.zinit/bin/zinit.zsh"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/bin:/usr/bin:/opt/android-studio/bin:$HOME/snap/flutter/common/flutter/bin
+export PATH=$PATH:$HOME/bin:/usr/bin
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_TRANSIENT_PROMPT=same-dir
@@ -78,7 +78,7 @@ zinit ice depth=1;
 zinit light romkatv/powerlevel10k
 
 zinit ice lucid wait='0' atinit='zpcompinit'
-zinit light zdharma/fast-syntax-highlighting
+zinit light "zdharma/fast-syntax-highlighting"
 
 zinit ice lucid wait="0" atload='_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
@@ -87,7 +87,7 @@ zinit ice lucid wait='0'
 zinit light zsh-users/zsh-completions
 
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
-zinit snippet OMZ::plugins/battery/battery.plugin.zsh
+#zinit snippet OMZ::plugins/battery/battery.plugin.zsh
 zinit snippet OMZ::plugins/common-aliases/common-aliases.plugin.zsh
 zinit snippet OMZ::plugins/autojump/autojump.plugin.zsh
 
@@ -107,17 +107,13 @@ zstyle ':completion:*' menu yes select
 autoload -Uz compinit && compinit
 
 # aliases
-alias zshconfig="io.elementary.code ~/.zshrc && source ~/.zshrc"
-alias ls="exa -F --icons"
-alias la="exa -alF --icons"
-alias lla="exa -aF --icons"
-alias cls="clear"
-alias android-studio="/opt/android-studio/bin/studio.sh"
-
+if [ -f ~/.shell_aliases ]; then
+    . ~/.shell_aliases
+fi
 
 
 # JAVA
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64:/usr/lib/jvm/java-11-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export JRE_HOME=$JAVA_HOME/jre
 export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JRE_HOME/lib
@@ -129,7 +125,11 @@ export CLASSPATH=$CLASSPATH:.:$JAVA_HOME/lib:$JRE_HOME/lib
 # eval "$(pyenv virtualenv-init -)"
 
 # Android
-export ANDROID_HOME="/home/harry90/Android/Sdk"
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH=$PATH:/opt/android-studio/bin
+
+# Flutter
+export PATH=$PATH:$HOME/development/flutter/bin
 
 # Texlive
 export MANPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/man
@@ -188,6 +188,7 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 # End of load
 
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/harry90/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -205,3 +206,5 @@ unset __conda_setup
 
 export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64\${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+eval "conda deactivate"
