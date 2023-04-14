@@ -39,6 +39,8 @@ Invoke-Expression (&starship init powershell)
 Import-Module -Name Terminal-Icons
 
 # PSReadLine
+Set-PSReadLineOption -BellStyle None
+Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 
